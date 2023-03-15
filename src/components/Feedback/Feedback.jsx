@@ -1,28 +1,23 @@
 import PropTypes from 'prop-types';
-
-import { Component } from "react";
 import css from './Feedback.module.css';
 
 
-export class Feedback extends Component {
+export const Feedback = ({ options, onLeaveFeedback }) => {
 
-        render(){
-         const { options } = this.props; 
+        const elements = Object.keys(options);
              return (
 
              <div className={css.buttonGroup}>
-              {options.map(el => {
+              {elements.map(el => {
                 return (
-                  <button className = {css.button} type="submit" key={el} onClick={() => this.props.onLeaveFeedback(el)}>
+                  <button className = {css.button} type="submit" key={el} onClick={() => onLeaveFeedback(el)}>
                     {el}
                   </button>
                 );
               })}
             </div>
         );
-      };
-}
-
+      }
 
 
 Feedback.propTypes = {
